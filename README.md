@@ -15,6 +15,17 @@ Built for the TEKNOFEST 2026 Aviation AI competition, where Task 3 is finding an
 | Detections placed on the ground | working, accuracy limited by a temporary camera calibration |
 | Live link (Android app → PC → Unity) | builds, not yet tested with the drone |
 
+## Screenshots
+
+![Replay: 3D twin over satellite ground, camera video and map](docs/images/replay-3d.png)
+*Replay with OBJECTS ON MAP on. The 3D twin (left) has a pin for each detected object, at the median of its ground hits. The coloured marks under the timeline are detection runs.*
+
+![Top-down view with detection hits on the ground](docs/images/objects-on-map.png)
+*Top-down camera. Each dot is one detection box centre projected onto the ground; the star and the rocks in the pond line up with the satellite image.*
+
+![Pond and rocks detected early in the flight](docs/images/pond-rocks.png)
+*Early in the flight: the rocks are detected in the camera video (top right) and placed in the pond.*
+
 ## How it works
 
 **Replay.** `FlightLog` reads the DJI flight record CSV (`*-aircraft.csv`, 10 Hz) or an Airdata CSV. Positions go into a local frame in metres (x east, y up, z north, origin at takeoff). `FlightReplayer` interpolates the drone pose for the current time. Every other view reads that same clock.
