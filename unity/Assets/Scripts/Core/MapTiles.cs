@@ -15,6 +15,11 @@ public static class MapTiles {
     static readonly HashSet<string> pending = new HashSet<string>();
     public static int Failures { get; private set; }
 
+    // The project enters Play mode without a domain reload, so statics survive between runs: textures from the
+    // last run are destroyed and loads cut off by stopping Play stay "pending" forever. Start clean every run.
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    static void ResetStatics() { loaded.Clear(); pending.Clear(); Failures = 0; }
+
     public static string Attribution(Source s) =>
         s == Source.Satellite ? "© Esri, Maxar, Earthstar Geographics" : "© OpenStreetMap contributors";
 
@@ -36,7 +41,7 @@ public static class MapTiles {
         string name = src == Source.Satellite ? "esri" : "osm";
         string key = $"{name}/{z}/{x}/{y}";
         while (pending.Contains(key)) yield return null;  // same tile already on its way (2D map + 3D ground)
-        if (loaded.TryGetValue(key, out var hit)) { done(hit); yield break; }
+        if (loaded.TryGetValue(key, out var hit) && hit) { done(hit); yield break; }
 
         pending.Add(key);
         byte[] bytes = null;
