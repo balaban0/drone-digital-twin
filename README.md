@@ -4,7 +4,9 @@ Digital twin of a DJI Phantom 3 Professional in Unity. A recorded flight is repl
 
 Built for the TEKNOFEST 2026 Aviation AI competition, where Task 3 is finding and tracking given reference objects in drone footage. The detection and tracking code is the team's competition code and is not part of this repository. Unity only reads its output files.
 
-<!-- Demo video: drag the MP4 into this README in GitHub's web editor and keep the generated link here. -->
+https://github.com/user-attachments/assets/29c68ee8-d71c-4cee-96cc-a162dc0b7cdf
+
+
 
 ## Status
 
