@@ -2,11 +2,9 @@
 
 Digital twin of a DJI Phantom 3 Professional in Unity. A recorded flight is replayed over satellite imagery, with the camera video and a 2D map in sync on one timeline. Reference objects found in the video by a vision pipeline are shown on the video, on the timeline and, optionally, on the ground.
 
-Built for the TEKNOFEST 2026 Aviation AI competition, where Task 3 is finding and tracking given reference objects in drone footage. The detection and tracking code is the team's competition code and is not part of this repository. Unity only reads its output files.
+The detection and tracking code is not part of this repository. Unity only reads its output files.
 
 https://github.com/user-attachments/assets/29c68ee8-d71c-4cee-96cc-a162dc0b7cdf
-
-
 
 ## Status
 
