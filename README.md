@@ -108,6 +108,5 @@ New-NetFirewallRule -DisplayName "Drone twin UDP" -Direction Inbound -Protocol U
 
 ## Credits
 
-- Task 3 detection and tracking pipeline (used for the results shown, not included): emirhaan11, TEKNOFEST team
-- DINOv2: Meta AI
+- Reference detection and tracking pipeline (used for the results shown, not included): @emirhaan11, balaban0
 - Imagery: Esri World Imagery; maps © OpenStreetMap contributors
