@@ -1,0 +1,2 @@
+rootProject.name = 'twinbridge'
+include ':app'

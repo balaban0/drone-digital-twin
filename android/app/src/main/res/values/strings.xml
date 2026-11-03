@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Twin Bridge</string>
+    <string name="host_hint">PC IP (e.g. 192.168.1.20)</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+</resources>

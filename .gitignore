@@ -1,0 +1,24 @@
+# Sub-projects have their own .gitignore: unity/.gitignore, android/.gitignore
+
+# Real flight logs and videos (kept locally, never committed)
+/data/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+python/reference*.jpg
+python/*.mp4
+
+# Reference object detection + tracking (team competition code, kept private)
+python/task3/
+python/detect_video.py
+python/requirements-task3.txt
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

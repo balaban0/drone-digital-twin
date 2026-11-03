@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+// The DJI App Key is not committed: put "dji.apiKey=..." in android/local.properties.
+// The key must be registered on the DJI Developer site with the applicationId (com.example.twinbridge).
+def localProps = new Properties()
+def localPropsFile = rootProject.file('local.properties')
+if (localPropsFile.exists()) localPropsFile.withInputStream { localProps.load(it) }
+
+android {
+    compileSdkVersion 33
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        applicationId "com.example.twinbridge"
+        minSdkVersion 23
+        targetSdkVersion 34
+        multiDexEnabled true
+        versionCode 1
+        versionName "0.1"
+        manifestPlaceholders = [DJI_API_KEY: localProps.getProperty('dji.apiKey', '')]
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+    }
+
+    // The buildTypes / packagingOptions below are taken as-is from the DJI sample project:
+    // the SDK's native libraries must not be stripped, and the proguard rules keep the dji.** classes.
+    buildTypes {
+        release {
+            shrinkResources false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            shrinkResources false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    packagingOptions {
+        doNotStrip "*/*/libdjivideo.so"
+        doNotStrip "*/*/libSDKRelativeJNI.so"
+        doNotStrip "*/*/libFlyForbid.so"
+        doNotStrip "*/*/libduml_vision_bokeh.so"
+        doNotStrip "*/*/libyuv2.so"
+        doNotStrip "*/*/libGroudStation.so"
+        doNotStrip "*/*/libFRCorkscrew.so"
+        doNotStrip "*/*/libUpgradeVerify.so"
+        doNotStrip "*/*/libFR.so"
+        doNotStrip "*/*/libDJIFlySafeCore.so"
+        doNotStrip "*/*/libdjifs_jni.so"
+        doNotStrip "*/*/libsfjni.so"
+        doNotStrip "*/*/libDJICommonJNI.so"
+        doNotStrip "*/*/libDJICSDKCommon.so"
+        doNotStrip "*/*/libDJIUpgradeCore.so"
+        doNotStrip "*/*/libDJIUpgradeJNI.so"
+        doNotStrip "*/*/libDJIWaypointV2Core.so"
+        doNotStrip "*/*/libAMapSDK_MAP_v6_9_2.so"
+        doNotStrip "*/*/libDJIMOP.so"
+        doNotStrip "*/*/libDJISDKLOGJNI.so"
+        exclude 'META-INF/rxjava.properties'
+        exclude 'assets/location_map_gps_locked.png'
+        exclude 'assets/location_map_gps_3d.png'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+// The sample project's dependencies needed by the SDK. The sample app's own UI libraries
+// (butterknife, otto, guava, play-services, subsampling-scale-image-view...) were removed.
+// If you hit NoClassDefFoundError at runtime, add the missing package from the sample's app/build.gradle.
+dependencies {
+    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation('com.dji:dji-sdk:4.18', {
+        exclude module: 'library-anti-distortion'
+    })
+    compileOnly 'com.dji:dji-sdk-provided:4.18'
+
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.core:core:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-rc01'
+    implementation 'androidx.annotation:annotation:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-process:2.3.1'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.10'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.4'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+}

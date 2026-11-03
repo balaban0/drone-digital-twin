@@ -1,0 +1,23 @@
+# Build outputs
+build/
+.gradle/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# Local settings (SDK path and the DJI App Key live here: dji.apiKey=...)
+local.properties
+
+# Android Studio
+.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Signing
+*.jks
+*.keystore
+.signing/

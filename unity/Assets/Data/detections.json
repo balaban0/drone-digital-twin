@@ -1,0 +1,65 @@
+{
+  "note": "MOCK data for demo",
+  "detections": [
+    {
+      "t": 91.1,
+      "label": "person",
+      "confidence": 0.67
+    },
+    {
+      "t": 127.3,
+      "label": "vehicle",
+      "confidence": 0.57
+    },
+    {
+      "t": 130.1,
+      "label": "vehicle",
+      "confidence": 0.78
+    },
+    {
+      "t": 350.6,
+      "label": "reference_object",
+      "confidence": 0.97
+    },
+    {
+      "t": 353.6,
+      "label": "reference_object",
+      "confidence": 0.88
+    },
+    {
+      "t": 356.6,
+      "label": "reference_object",
+      "confidence": 0.83
+    },
+    {
+      "t": 359.6,
+      "label": "reference_object",
+      "confidence": 0.95
+    },
+    {
+      "t": 438.4,
+      "label": "person",
+      "confidence": 0.94
+    },
+    {
+      "t": 520.2,
+      "label": "vehicle",
+      "confidence": 0.58
+    },
+    {
+      "t": 624.7,
+      "label": "person",
+      "confidence": 0.56
+    },
+    {
+      "t": 759.2,
+      "label": "person",
+      "confidence": 0.93
+    },
+    {
+      "t": 812.6,
+      "label": "person",
+      "confidence": 0.78
+    }
+  ]
+}

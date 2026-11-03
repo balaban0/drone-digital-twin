@@ -1,0 +1,24 @@
+{
+  "_comment": "TEMPORARY estimate - replace with a checkerboard calibration (same 1920x1080 24p video mode).",
+  "camera": "DJI Phantom 3 Professional, FC300X",
+  "video_mode": "1920x1080 @ 23.976 fps (H.264)",
+  "image_size": [1920, 1080],
+
+  "focal_length_px": [1035, 1035],
+  "principal_point_px": [960, 540],
+  "skew": 0,
+  "radial_distortion": [0, 0],
+  "tangential_distortion": [0, 0],
+
+  "hfov_deg": 85.7,
+  "vfov_deg": 55.1,
+  "focal_length_px_95ci": [1019, 1049],
+
+  "source": {
+    "method": "Nadir flight self-calibration: image speed (phase correlation, frame to frame) = f * ground speed / height; robust linear fit with an offset term over 2054 frames where gimbal pitch < -88 deg, speed > 2 m/s, yaw rate < 3 deg/s, |vz| < 0.3 m/s.",
+    "flight": "data/flight_logs/DJIFlightRecord_2026-11-02_[14-22-12]-aircraft.csv + DJI_00013.mp4 (video t=0 at log t=25.15 s)",
+    "cross_check": "DJI spec 20 mm (35 mm equiv.) lens; if 1080p uses the full 4:3 sensor width -> HFOV 84.0 deg, f = 1066 px (+3% vs this estimate).",
+    "unknown": "Lens distortion is NOT estimated (set to 0); the 94 deg wide lens has visible barrel distortion, so positions near the image edges will be less accurate. Principal point assumed at the image centre.",
+    "error_sources": "Barometric height (+-0.5-1 m at 20 m = 3-5%), ground not exactly at takeoff height, residual gimbal motion."
+  }
+}

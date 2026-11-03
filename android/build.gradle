@@ -1,0 +1,22 @@
+// Versions kept the same as the DJI Mobile SDK 4.18 sample project (AGP 4.2.2 + Gradle 6.7.1).
+// Gradle 6.7.1 needs JDK 11: Android Studio > Settings > Build Tools > Gradle > Gradle JDK = 11.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.2'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
